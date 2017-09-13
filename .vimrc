@@ -43,4 +43,7 @@ Plug 'ymattw/vim-fold-paragraph'
 set foldmethod=manual
 nmap <Leader><Space> :call ToggleFoldParagraph()<CR>
 
+" Tab completion
+Plug 'ervandew/supertab'
+
 call plug#end()
