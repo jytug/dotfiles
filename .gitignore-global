@@ -1,0 +1,10 @@
+# tmp files
+*.swp
+*~
+
+# python
+*.pyc
+
+# large directories
+build
+data
