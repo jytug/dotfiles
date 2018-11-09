@@ -47,3 +47,7 @@ nmap <Leader><Space> :call ToggleFoldParagraph()<CR>
 Plug 'ervandew/supertab'
 
 call plug#end()
+
+" tags
+set tags=tags
+nnoremap <silent><Leader><C-]> <C-w><C-]><C-w>T
