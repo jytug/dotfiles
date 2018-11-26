@@ -8,3 +8,6 @@
 # large directories
 build
 data
+
+# build files
+*.o

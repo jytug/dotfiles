@@ -1,5 +1,7 @@
 syntax on
 
+colorscheme elflord
+
 " Line numbers - by default current line is absolute,
 " while all others are relative. Press Ctrl-N twice to
 " toggle the relativenumber option
