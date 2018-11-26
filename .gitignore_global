@@ -11,3 +11,19 @@ data
 
 # build files
 *.o
+
+# temp files
+tmp
+
+# zips etc
+*.zip
+*.gz
+
+# documents
+*.pdf
+
+# blobs
+*.diff
+
+# tags
+tags
