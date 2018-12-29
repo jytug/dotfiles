@@ -6,6 +6,11 @@ syntax on
 set relativenumber
 set number
 nmap <C-N><C-N> :set invrelativenumber<CR>
+set textwidth=79
+
+" Tab completion
+set wildmode=longest,list,full
+set wildmenu
 
 " Underline current line - switched on by default.
 " Type Ctrl-U twice to toggle this option
@@ -38,6 +43,10 @@ call plug#begin()
 " For commenting
 Plug 'scrooloose/nerdcommenter'
 
+" git-blame
+Plug 'zivyangll/git-blame.vim' 
+nnoremap <Leader>s :<C-u>call gitblame#echo()<CR>
+
 " For folding paragraphs
 Plug 'ymattw/vim-fold-paragraph'
 set foldmethod=manual
@@ -51,3 +60,4 @@ call plug#end()
 " tags
 set tags=tags
 nnoremap <silent><Leader><C-]> <C-w><C-]><C-w>T
+

@@ -22,3 +22,15 @@ tmp
 
 # tags
 tags
+
+# hidden files
+.*
+
+# compiled libs
+*.a
+*.so
+
+# data
+*.yaml
+*.yml
+*.json
