@@ -8,6 +8,11 @@
 # large directories
 build
 data
+
+# build files
+*.o
+
+# temp files
 tmp
 
 # zips etc
