@@ -38,8 +38,7 @@ set shiftwidth=4
 set expandtab
 
 " To install Vim-Plug
-" curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-"     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+" curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 call plug#begin()
 
 " For commenting
@@ -56,6 +55,13 @@ nmap <Leader><Space> :call ToggleFoldParagraph()<CR>
 
 " Tab completion
 Plug 'ervandew/supertab'
+
+" FZF
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+
+" Git stuff
+Plug 'tpope/vim-fugitive'
 
 call plug#end()
 
