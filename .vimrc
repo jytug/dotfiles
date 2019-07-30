@@ -45,8 +45,7 @@ set expandtab
 "------------------------
 
 " To install Vim-Plug
-" curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-"     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+" curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 call plug#begin()
 
 
@@ -74,15 +73,14 @@ Plug 'ervandew/supertab'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
+" Git stuff
+Plug 'tpope/vim-fugitive'
+
 call plug#end()
 
 " tags
 set tags=tags
 nnoremap <silent><Leader><C-]> <C-w><C-]><C-w>T
-
-" Python completion
-filetype plugin on
-let g:pydiction_location = '/Users/filip/.pydiction/complete-dict'
 
 " Python imports
 nmap <C-m> : ImportName<CR>
