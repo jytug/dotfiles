@@ -13,7 +13,10 @@ set number
 nmap <C-N><C-N> :set invrelativenumber<CR>
 set textwidth=79
 
-" Tab completion
+" highlight when searching
+set hlsearch
+
+" Tab completion made easier
 set wildmode=longest,list,full
 set wildmenu
 
@@ -40,9 +43,19 @@ set shiftwidth=4
 " On pressing tab, insert 4 spaces
 set expandtab
 
+"------------------------
+" PLUGINS
+"------------------------
+
 " To install Vim-Plug
 " curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 call plug#begin()
+
+
+" To install pathogen
+" mkdir -p ~/.vim/autoload ~/.vim/bundle && \
+" curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+execute pathogen#infect()
 
 " For commenting
 Plug 'scrooloose/nerdcommenter'
@@ -72,3 +85,32 @@ call plug#end()
 set tags=tags
 nnoremap <silent><Leader><C-]> <C-w><C-]><C-w>T
 
+" Python imports
+nmap <C-m> : ImportName<CR>
+command Isort :%! isort - -w 79 -m 0
+
+" Workaround for NERDTree
+let g:NERDTreeNodeDelimiter = "\u00a0"
+
+" Type :Help to open help vertically
+command -nargs=* -complete=help Help vertical belowright help <args>
+
+" Make the active window more visible
+set colorcolumn=80
+augroup BgHighlight
+    autocmd!
+    autocmd WinEnter * set colorcolumn=80
+    autocmd WinLeave * set colorcolumn=0
+augroup END
+
+" Type '' to copy selection to system clipboard (Mac)
+vmap '' :w !pbcopy<CR><CR>
+
+" Type gb to see list of buffers and select one
+nnoremap gb :buffers<CR>:buffer<Space>
+
+nmap <C-h> : hide<CR>
+
+" open ctag in tab/vertical split
+ map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+ map <leader><C-\> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>

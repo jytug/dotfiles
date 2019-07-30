@@ -2,6 +2,9 @@
 *.swp
 *~
 
+# venv
+venv/
+
 # python
 *.pyc
 
@@ -39,3 +42,6 @@ tags
 *.yaml
 *.yml
 *.json
+
+# notebooks
+*.ipynb
