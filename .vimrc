@@ -1,5 +1,8 @@
 syntax on
 
+set splitbelow
+set splitright
+
 colorscheme elflord
 
 " Line numbers - by default current line is absolute,
