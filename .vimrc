@@ -1,9 +1,10 @@
 syntax on
 
+
 set splitbelow
 set splitright
 
-colorscheme elflord
+set nowrap
 
 " Line numbers - by default current line is absolute,
 " while all others are relative. Press Ctrl-N twice to
@@ -43,6 +44,14 @@ set shiftwidth=4
 " On pressing tab, insert 4 spaces
 set expandtab
 
+noremap <Leader>y "*y
+noremap <Leader>p "*p
+noremap <Leader>Y "+y
+noremap <Leader>P "+p
+
+" Remove trailing whitespace before saving
+autocmd BufWritePre * %s/\s\+$//e
+
 "------------------------
 " PLUGINS
 "------------------------
@@ -55,7 +64,7 @@ call plug#begin()
 Plug 'scrooloose/nerdcommenter'
 
 " git-blame
-Plug 'zivyangll/git-blame.vim' 
+Plug 'zivyangll/git-blame.vim'
 nnoremap <Leader>s :<C-u>call gitblame#echo()<CR>
 
 " For folding paragraphs
@@ -73,6 +82,21 @@ Plug 'junegunn/fzf.vim'
 " Git stuff
 Plug 'tpope/vim-fugitive'
 
+" Nerdtree
+Plug 'vim-nerdtree/nerdtree'
+
+" Colorschemes
+Plug 'romainl/flattened'
+
+" Python imports
+Plug 'mgedmin/python-imports.vim'
+
+" Black
+Plug 'psf/black'
+
+" Autoflake
+Plug 'tell-k/vim-autoflake'
+
 call plug#end()
 
 " tags
@@ -89,13 +113,17 @@ let g:NERDTreeNodeDelimiter = "\u00a0"
 " Type :Help to open help vertically
 command -nargs=* -complete=help Help vertical belowright help <args>
 
-" Make the active window more visible
+" Make the active window more visible and highlight the text width
+nnoremap <C-L><C-L> :execute "set colorcolumn=" . (&colorcolumn == "" ? "80" : "")<CR>
 set colorcolumn=80
 augroup BgHighlight
     autocmd!
     autocmd WinEnter * set colorcolumn=80
     autocmd WinLeave * set colorcolumn=0
 augroup END
+
+" Type C-k to go to definitions backwards (python)
+nnoremap <C-k> ?^\s*def\\|^\s*class<CR>
 
 " Type '' to copy selection to system clipboard (Mac)
 vmap '' :w !pbcopy<CR><CR>
@@ -108,3 +136,8 @@ nmap <C-h> : hide<CR>
 " open ctag in tab/vertical split
  map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
  map <leader><C-\> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+
+" Local .lvimrc
+if filereadable(expand(printf('%s/%s', getcwd(), '.lvimrc')))
+  exec printf('source %s/%s', getcwd(), '.lvimrc')
+endif
