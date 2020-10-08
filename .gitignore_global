@@ -10,13 +10,13 @@ env/
 
 # large directories
 build
-# data
+data
 
 # build files
 *.o
 
 # temp files
-tmp
+tmp*
 
 # zips etc
 *.zip
@@ -45,3 +45,7 @@ tags
 
 # notebooks
 *.ipynb
+
+# python
+*.pkl
+
