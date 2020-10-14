@@ -49,3 +49,6 @@ tags
 # python
 *.pkl
 
+
+# logs
+*.log
