@@ -6,6 +6,9 @@ set splitright
 
 set nowrap
 
+" FZF -- Control-P to search for file
+nmap <C-p> :FZF<CR>
+
 " Line numbers - by default current line is absolute,
 " while all others are relative. Press Ctrl-N twice to
 " toggle the relativenumber option
@@ -25,8 +28,6 @@ set wildmenu
 " Type Ctrl-U twice to toggle this option
 " Pres Leader-l to highlight some line
 set cursorline
-nnoremap <C-U><C-U> :set cursorline!<CR>
-nnoremap <silent> <Leader>l ml:execute 'match Search /\%'.line('.').'l/'<CR>
 
 
 " Set <leader> to space
@@ -62,6 +63,9 @@ call plug#begin()
 
 " For commenting
 Plug 'scrooloose/nerdcommenter'
+
+" Rust
+Plug 'rust-lang/rust.vim'
 
 " git-blame
 Plug 'zivyangll/git-blame.vim'
@@ -124,9 +128,6 @@ augroup END
 
 " Type C-k to go to definitions backwards (python)
 nnoremap <C-k> ?^\s*def\\|^\s*class<CR>
-
-" Type '' to copy selection to system clipboard (Mac)
-vmap '' :w !pbcopy<CR><CR>
 
 " Type gb to see list of buffers and select one
 nnoremap gb :buffers<CR>:buffer<Space>
