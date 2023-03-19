@@ -1,6 +1,6 @@
 syntax on
 
-
+" Splitting creates a new window to the right and below
 set splitbelow
 set splitright
 
@@ -14,11 +14,10 @@ nmap <C-p> :FZF<CR>
 " toggle the relativenumber option
 set relativenumber
 set number
-nmap <C-N><C-N> :set invrelativenumber<CR>
 set textwidth=79
 
 " highlight when searching
-set hlsearch
+set nohlsearch
 
 " Tab completion made easier
 set wildmode=longest,list,full
@@ -52,6 +51,20 @@ noremap <Leader>P "+p
 
 " Remove trailing whitespace before saving
 autocmd BufWritePre * %s/\s\+$//e
+
+" Run command into temporary buffer
+function! Scratch()
+    tabe
+    noswapfile hide enew
+    setlocal buftype=nofile
+    setlocal bufhidden=hide
+endfunction
+
+command -nargs=1 Search call Scratch() | r! ag --nogroup <args>
+
+" Ctrl+s opens a new scratch tab
+nnoremap <C-s> :call Scratch()<cr>
+" nnoremap <C-n> :call Scratch | r! ag --nogroup <C-r><C-w>
 
 "------------------------
 " PLUGINS
